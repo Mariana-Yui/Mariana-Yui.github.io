@@ -1,10 +1,10 @@
 # Site settings
 title: Mariana Blog
-SEOTitle: Mariana的博客 | Yui Blog
-header-img: img/post-bg-2.jpg
+SEOTitle: Mariana Blog
+header-img: img/post-bg-desk.jpg
 email: HealMSlin@gmail.com
-description: "想做的事太多, 能用的时间太少"
-keyword: "Lin,Mariana Blog, Denislin的笔记本, linxiaoxing, 林孝星, front-end, full-stack, 前端"
+description: "write less, do more"
+keyword: "Lin,Mariana Blog, Denislin的博客, linxiaoxing, front-end, full-stack, 前端"
 url: "http://mariana-yui.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/mariana-yui/mariana-yui.github.io.git" # you code repository
