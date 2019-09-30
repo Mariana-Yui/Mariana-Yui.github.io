@@ -13,4 +13,4 @@ tags:
 ---
 
 ## My First Blog
-![测试图片]('../img/2019-09-30/test.jpg')
+![测试图片](/img/2019-09-30/test.jpg)
