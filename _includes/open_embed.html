@@ -13,4 +13,7 @@
             url: 'https://music.163.com/song/media/outer/url?id=433103084.mp3',
         }]
     });
+    ap.on('canplay', function (event) {
+        ap.play();
+    });
 </script>
