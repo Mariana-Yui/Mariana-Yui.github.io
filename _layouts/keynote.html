@@ -182,7 +182,19 @@ layout: default
     resize();
 </script>
 
-
+<!-- aplayer -->
+<script src="{{ site.aplayer_js }}"></script>
+<script>
+    const ap = new APlayer({
+        container: document.getElementById('aplayer'),
+        audio: [{
+            name: 'Mariana',
+            artist: 'Childs',
+            url: '/img/music/Mariana.flac',
+            cover: '/img/avatar_m.jpg',
+        }]
+    });
+</script>
 
 {% if site.disqus.enable %}
 <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
