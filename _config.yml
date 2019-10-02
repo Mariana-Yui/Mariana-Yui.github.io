@@ -15,7 +15,7 @@ sidebar-about-description: "I'll be alright. One day. Someday. Just not today."
 sidebar-avatar: /img/avatar_anime.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # bgm
-aplayer_js: js/APlayer.min.js
+aplayer_js: https://mariana-yui.github.io/js/APlayer.min.js
 
 # SNS settings
 RSS: false
