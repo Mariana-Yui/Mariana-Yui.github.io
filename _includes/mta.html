@@ -9,4 +9,22 @@
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(mta, s);
     })();
+
+    var scrollLength = 0, isScroll = false;
+    var startTime = Date.now();
+    window.addEventListener('scroll', function (e) {
+        isScroll = true;
+        scrollLength = document.documentElement.scrollTop > scrollLength ? document.documentElement.scrollTop : scrollLength;
+    });
+    window.addEventListener('beforeunload', function (e) {
+        var endTime = Date.now();
+        MtaH5.clickStat('time', {
+            scantime: endTime-startTime,
+            pagelength: document.body.clientHeight,
+        });
+        MtaH5.clickStat('scroll', {
+            isscroll: isScroll,
+            scrolllength: scrollLength
+        });
+    });
 </script>
