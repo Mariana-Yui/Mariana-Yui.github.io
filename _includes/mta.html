@@ -17,6 +17,7 @@
         scrollLength = document.documentElement.scrollTop > scrollLength ? document.documentElement.scrollTop : scrollLength;
     });
     window.addEventListener('beforeunload', function (e) {
+        console.log('close page');
         var endTime = Date.now();
         MtaH5.clickStat('time', {
             scantime: endTime-startTime,
