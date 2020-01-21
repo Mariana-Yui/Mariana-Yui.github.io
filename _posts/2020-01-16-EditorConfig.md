@@ -68,49 +68,180 @@ indent_size = 2
 
 1. 安装 prettier 包 `npm install -g prettier`
 2. 安装 prettier for vscode 插件
-3. 新建.prettierrc 文件
+3. 新建.prettierrc.js 文件
 
 配置参考：全部参数[here](https://prettier.io/docs/en/configuration.html)
 
-```sh
+```js
+// prettier.config.js or .prettierrc.js
+module.exports = {
+  // 一行最多 100 字符
+  printWidth: 100,
+  // 使用 4 个空格缩进
+  tabWidth: 4,
+  // 不使用缩进符，而使用空格
+  useTabs: false,
+  // 行尾需要有分号
+  semi: true,
+  // 使用单引号
+  singleQuote: true,
+  // 对象的 key 仅在必要时用引号
+  quoteProps: "as-needed",
+  // jsx 不使用单引号，而使用双引号
+  jsxSingleQuote: false,
+  // 末尾不需要逗号
+  trailingComma: "none",
+  // 大括号内的首尾需要空格
+  bracketSpacing: true,
+  // jsx 标签的反尖括号需要换行
+  jsxBracketSameLine: false,
+  // 箭头函数，只有一个参数的时候，也需要括号
+  arrowParens: "always",
+  // 每个文件格式化的范围是文件的全部内容
+  rangeStart: 0,
+  rangeEnd: Infinity,
+  // 不需要写文件开头的 @prettier
+  requirePragma: false,
+  // 不需要自动在文件开头插入 @prettier
+  insertPragma: false,
+  // 使用默认的折行标准
+  proseWrap: "preserve",
+  // 根据显示样式决定 html 要不要折行
+  htmlWhitespaceSensitivity: "css",
+  // 换行符使用 lf
+  endOfLine: "lf"
+};
+```
+
+### vscode 中集成 prettier
+
+```json
 {
-  "semi": true,
-  "trailingComma": "all",
-  "singleQuote": true,
-  "printWidth": 70,
+  "files.eol": "\n",
+  "editor.tabSize": 4,
+  // 与files.autoSave: "afterDelay"冲突
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
 ```
 
-## eslint 配置
+## js 中 eslint 配置
 
-1. 安装 eslint 包 `npm install -g eslint`
+1. 安装 eslint 包 `npm install -g eslint` 或 `npm install --save-dev prettier`
 2. 初始化 eslint 文件 `eslint --init`, 这里我选择 json 文件 eslint 不生效不知道为什么，换成 js 文件就好了。
 3. 配置 .eslintrc.js 文件
 
 配置参考：
+
 ```js
 module.exports = {
-	env: {
-		browser: true,
-		commonjs: true,
-		es6: true,
-	},
-	extends: ['eslint:recommended'],
-	parserOptions: {
-		sourceType: 'module',
-	},
-	rules: {
-		indent: ['error', 'tab'],
-		'linebreak-style': ['error', 'unix'],
-		quotes: ['error', 'single'],
-		semi: ['error', 'never'],
-	},
+  env: {
+    browser: true,
+    commonjs: true,
+    es6: true
+  },
+  extends: ["eslint:recommended"],
+  parserOptions: {
+    sourceType: "module"
+  },
+  rules: {
+    indent: ["error", "tab"],
+    "linebreak-style": ["error", "unix"],
+    quotes: ["error", "single"],
+    semi: ["error", "never"]
+  }
+};
+```
+
+## Typescript 中 eslint 配置
+
+### 2019.1 开始 TS 官方不再使用 tslint，建议使用 eslint 进行代码规范
+
+1. 在项目中安装 eslint `npm install --save-dev eslint`
+2. eslint 无法识别 ts 的部分语法，安装 ts 的解析器替换默认解析器 `npm install --save-dev typescript @typescript-eslint/parser`
+3. 安装对 eslint 默认规则补充的包 `npm install --save-dev @typescript-eslint/eslint-plugin`
+4. 新建.eslintrc.js 文件(不知道为啥 json 文件没效果)
+   配置如下:
+
+```js
+module.exports = {
+  parser: "@typescript-eslint/parser",
+  plugins: ["@typescript-eslint"],
+  rules: {
+    // 禁止使用 var
+    "no-var": "error",
+    // 优先使用 interface 而不是 type
+    "@typescript-eslint/consistent-type-definitions": ["error", "interface"]
+  }
+};
+```
+
+### 遇到`ImportDeclaration should appear when the mode is ES6 and in the module context`报错，在.eslintrc.js 中加入以下配置：
+
+```js
+parserOptions: {
+    ecmaVersion: 6,
+    sourceType: 'module',
+    ecmaFeatures: {
+        modules: true
+    }
 }
+```
+
+### vscode 中集成 eslint 检查并在保存时自动修复
+
+在`setting.json`文件中加入对 ts 的检查
+
+```json
+{
+  // instead of "eslint.autoFixOnSave": true
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  // autoFix默认开启
+  "eslint.validate": ["javascript", "javascriptreact", "typescript"],
+  "typescript.tsdk": "node_modules/typescript/lib"
+}
+```
+
+### (精)使用 AlloyTeam 的 ESLint 配置
+
+alloy 团队的 eslint 配置去掉了糟粕，并且不再包含代码格式的规则，把其交给更专业的 prettier
+
+1. 安装`npm install --save-dev eslint typescript @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-config-alloy`
+2. 添加配置如下：(可以将 parser 和 plugin 去掉了)
+
+```js
+module.exports = {
+  extends: ["alloy", "alloy/typescript"],
+  env: {
+    // 您的环境变量（包含多个预定义的全局变量）
+    // Your environments (which contains several predefined global variables)
+    //
+    // browser: true,
+    // node: true,
+    // mocha: true,
+    // jest: true,
+    // jquery: true
+  },
+  globals: {
+    // 您的全局变量（设置为 false 表示它不允许被重新赋值）
+    // Your global variables (setting to false means it's not allowed to be reassigned)
+    //
+    // myGlobal: false
+  },
+  rules: {
+    // 自定义您的规则
+    // Customize your rules
+  }
+};
 ```
 
 参考资料：  
 [editorconfig vs prettier vs eslint](https://stackoverflow.com/questions/48363647/editorconfig-vs-eslint-vs-prettier-is-it-worthwhile-to-use-them-all)  
-[editorconfig配置](https://stackoverflow.com/questions/46846128/editorconfig-for-vs-code-not-working)  
-[prettier配置](https://www.robinwieruch.de/how-to-use-prettier-vscode)
-[eslint配置](https://segmentfault.com/a/1190000009077086)  
-[eslint中js规范配置参考](https://juejin.im/post/5cd3f035e51d456e6479b538#heading-4)  
+[editorconfig 配置](https://stackoverflow.com/questions/46846128/editorconfig-for-vs-code-not-working)  
+[prettier 配置](https://www.robinwieruch.de/how-to-use-prettier-vscode)
+[eslint 配置](https://segmentfault.com/a/1190000009077086)  
+[eslint 中 js 规范配置参考](https://juejin.im/post/5cd3f035e51d456e6479b538#heading-4)  
+[ImportDeclaration should appear when the mode is ES6 and in the module context 报错解决](https://github.com/eslint/eslint/issues/4344)
+[typescript 配置代码规范](https://ts.xcatliu.com/engineering/lint)
