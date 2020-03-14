@@ -33,3 +33,9 @@ Temporary Items
 
 # debug file
 _site
+
+# node_modules
+node_modules
+
+# lock file
+yarn.lock
