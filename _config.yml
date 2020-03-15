@@ -4,7 +4,7 @@ SEOTitle: Mariana Blog
 header-img: img/post-bg-desk.jpg
 email: HealMSlin@gmail.com
 description: "write less, do more"
-keyword: "Lin,Mariana Blog, Denislin的博客, linxiaoxing, front-end, full-stack, 前端"
+keyword: "Lin,Mariana Blog, Denislin的博客, front-end, full-stack, 前端"
 url: "http://mariana-yui.github.io" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/mariana-yui/mariana-yui.github.io.git" # you code repository
