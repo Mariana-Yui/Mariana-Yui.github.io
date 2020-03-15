@@ -11,7 +11,7 @@ github_repo: "https://github.com/mariana-yui/mariana-yui.github.io.git" # you co
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
-sidebar-about-description: "God never means to let you down, it is yourself."
+sidebar-about-description: "Sometimes you have to stop thinking too much and just go where your heart takes you."
 sidebar-avatar: /img/avatar_fav.jpg # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # bgm
