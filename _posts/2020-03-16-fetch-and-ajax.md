@@ -112,7 +112,7 @@ u1.buffer === a1
 ```
 
 下面这张图也能看出两者的关系:
-![arrayBuffer](/img/2020-03-15-fetch-and-ajax/arraybuffer.png)
+![arrayBuffer](/img/2020-03-16-fetch-and-ajax/arraybuffer.png)
 
 ## Buffer 与 TypedArray
 
