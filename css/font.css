@@ -1,12 +1,4 @@
 @font-face {
-  font-family: "HoangYen11";
-  src: url("/css/font1/font1.gif");
-  src: url("/css/font1/font2.gif")
-      format("embedded-opentype"),
-    url("/css/font1/font3.png")
-      format("woff2"),
-    url("/css/font1/font4.bmp")
-      format("woff");
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'MamaLove';
+    src: url('../fonts/MamaLove.ttf');
 }
