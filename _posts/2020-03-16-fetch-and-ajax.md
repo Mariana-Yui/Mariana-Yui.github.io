@@ -3,7 +3,7 @@ layout: post
 title: fetch获取线上图片引发的思考
 date: 2020-03-16
 author: Mariana
-header-img: img/2020/2020-03-16.png
+header-img: img/2020/2020-03-16.jpg
 catalog: true
 tags:
   - 前端
