@@ -124,6 +124,8 @@ module.exports = {
   "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
 ```
+### update
+- 2020-03-28 使用配置文件的场合将vscode的默认选项屏蔽一下,否则可能有冲突, 具体: 在`setting.json`末尾加上`"prettier.requireConfig": true`(使用配置文件格式化) 
 
 ## js 中 eslint 配置
 
