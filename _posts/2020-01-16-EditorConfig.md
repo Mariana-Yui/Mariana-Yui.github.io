@@ -238,6 +238,26 @@ module.exports = {
   }
 };
 ```
+## Vue with Typescript
+建议直接使用官方提供的脚手架, 引用官网的一句话:
+> The most rules of eslint-plugin-vue require vue-eslint-parser to check `<template>` ASTs.
+
+由于vue是html+ts的特殊模板文件性质,使上述的`ts`扩展无法对`.vue`进行解析, 我尝试配置发现各种各样的问题,还是官方脚手架一键操作简单,只能说..真香
+
+1. 安装脚手架`vue-cli`
+```
+    npm install -g @vue/cli @vue/cli-service-global
+    # or
+    yarn global add @vue/cli @vue/cli-service-global
+```
+2. 新建项目`vue create your-project-name`, 放个配置例子
+![1](/img/2020-01-16/1.png)
+![2](/img/2020-01-16/2.png)
+3. 加入上述的`.editorconfig`和`.prettierrc.js`文件, 就可以愉快地用`ts`开发`vue`了.
+
+### node-sass ?? dart-sass ??
+由于`node-sass`使用C++开发, 安装`node-sass`可能会遇到卡死/下载失败等问题(博主也遇到了), 官方现在也推荐使用`dart-sass`
+
 
 参考资料：  
 [editorconfig vs prettier vs eslint](https://stackoverflow.com/questions/48363647/editorconfig-vs-eslint-vs-prettier-is-it-worthwhile-to-use-them-all)  
